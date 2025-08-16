@@ -12,7 +12,7 @@
     "hbs": "^4.2.0",
     "http-errors": "~1.6.3",
     "mongoose": "^8.16.5",
-    "morgan": "~1.9.1"
+    "morgan": "^1.10.1"
   },
   "devDependencies": {
     "@babel/core": "^7.28.0"
