@@ -4,7 +4,8 @@
  * Module dependencies.
  */
 
-var app = require('../app');
+var app = require('../app_api');
+
 var debug = require('debug')('travlr:server');
 var http = require('http');
 
