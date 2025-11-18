@@ -26,6 +26,11 @@ export class TripData {
     return this.http.get<Trip[]>(this.tripsUrl);
   }
 
+  
+  getTripByCode(tripCode: string): Observable<Trip> {
+    return this.http.get<Trip>(`${this.tripsUrl}/${tripCode}`);
+  }
+
   // Add a trip (requires JWT)
   addTrip(formData: Trip): Observable<Trip> {
     const token = this.storage.getItem('travlr-token');
@@ -49,21 +54,15 @@ export class TripData {
 
   // ---------------- Authentication API ----------------
 
-  // Call to our /login endpoint, returns JWT
   login(user: User, passwd: string): Observable<AuthResponse> {
-    // console.log('Inside TripData::login');
     return this.handleAuthAPICall('login', user, passwd);
   }
 
-  // Call to our /register endpoint, creates user and returns JWT
   register(user: User, passwd: string): Observable<AuthResponse> {
-    // console.log('Inside TripData::register');
     return this.handleAuthAPICall('register', user, passwd);
   }
 
-  // Helper method to process both login and register methods
   private handleAuthAPICall(endpoint: string, user: User, passwd: string): Observable<AuthResponse> {
-    // console.log('Inside TripData::handleAuthAPICall');
     const formData = {
       name: user.name,
       email: user.email,

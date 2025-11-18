@@ -1,26 +1,17 @@
 <div class="card">
   <div class="card-header">{{ trip.name }}</div>
-  <img 
-    src="assets/images/{{ trip.image }}" 
-    alt="trip thumbnail" 
-    class="card-img-top">
-  
+  <img class="card-img-top" [src]="trip.image" />
   <div class="card-body">
+    <h5 class="card-title">{{ trip.code }}</h5>
     <h6 class="card-subtitle mb-2 text-muted">
-      {{ trip.resort }}
+      {{ trip.length }} nights
     </h6>
-
-    <p class="card-subtitle mt-3 mb-3 text-muted">
-      {{ trip.length }} only 
-      {{ trip.perPerson | currency: 'USD': 'symbol' }} per person
+    <p class="card-text text-muted">
+      {{ trip.perPerson | currency:'USD':'symbol' }} per person
     </p>
-
-    <p class="card-text" [innerHTML]="trip.description"></p>
-
+    <p class="card-text">{{ trip.description }}</p>
     <div *ngIf="isLoggedIn()">
-      <button 
-        (click)="editTrip(trip)" 
-        class="btn btn-info">
+      <button (click)="editTrip(trip)" class="btn btn-info">
         Edit Trip
       </button>
     </div>

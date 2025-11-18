@@ -1,3 +1,4 @@
+// src/app/components/edit-trip.ts
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
@@ -9,8 +10,8 @@ import { Trip } from '../models/trip';
   selector: 'app-edit-trip',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './edit-trip..html',
-  styleUrls: ['./edit-trip..css']   // corrected from styleUrl → styleUrls
+  templateUrl: './edit-trip.html',
+  styleUrls: ['./edit-trip.css']   // corrected from styleUrl → styleUrls
 })
 export class EditTrip implements OnInit {
   public editForm!: FormGroup;
@@ -49,19 +50,18 @@ export class EditTrip implements OnInit {
       description: ['', Validators.required]
     });
 
-    this.tripData.getTrips(tripCode).subscribe({
+    
+    this.tripData.getTripByCode(tripCode).subscribe({
+
       next: (value: any) => {
         this.trip = value;
-
         // Populate our record into the form
         this.editForm.patchValue(value[0]);
-
         if (!value) {
           this.message = 'No Trip Retrieved!';
         } else {
           this.message = 'Trip: ' + tripCode + ' retrieved';
         }
-
         console.log(this.message);
       },
       error: (error: any) => {

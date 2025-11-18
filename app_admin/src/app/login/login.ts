@@ -9,8 +9,8 @@ import { User } from '../models/user';
   selector: 'app-login',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  templateUrl: './login.html',
+  styleUrls: ['./login.css']
 })
 export class Login implements OnInit {
   public formError: string = '';
